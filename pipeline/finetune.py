@@ -66,6 +66,7 @@ def main():
         epoch=args.load_epoch,
         pretrained_model=args.pretrained_model,
         dtype=args.dtype,
+        cache=args.cache,
     )
     tokenizer, text_encoder, vae, unet = stable_models
     vae_params, unet_params = stable_params

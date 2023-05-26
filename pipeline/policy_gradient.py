@@ -34,50 +34,6 @@ class Parser(utils.Parser):
     dataset: str = "consistent_imagenet"
 
 
-def load_unet(
-    loadpath, epoch="latest", pretrained_model="flax/sd15", dtype=jnp.bfloat16
-):
-    revision = None
-    if jax.process_count() > 1:
-        cache = None
-    else:
-        cache = os.path.expanduser("~/nfs/cache")
-    print(
-        f"[ utils/serialization ] Downloading pretrained model: {pretrained_model} | "
-        f"revision: {revision} | dtype: {dtype} | cache: {cache}"
-    )
-    pipeline, params = FlaxStableDiffusionPipeline.from_pretrained(
-        pretrained_model,
-        revision=revision,
-        dtype=dtype,
-        cache_dir=cache,
-    )
-
-    for key in ["text_encoder", "vae", "unet"]:
-        if not is_dtype(params[key], dtype):
-            loaded_dtype = get_dtype(params[key])
-            print(
-                f"[ utils/serialization ] Warning: expected {dtype} "
-                f"for {key}, got {loaded_dtype}"
-            )
-            params[key] = to_dtype(params[key], dtype)
-
-    for key in ["safety_checker"]:
-        if key in params:
-            print(f"[ utils/serialization ] Warning: removing {key}")
-            del params[key]
-
-    if loadpath is not None:
-        print(f"[ utils/serialization ] Loading model from {loadpath}")
-        fullpath = os.path.join(loadpath, "unet")
-        unet_params = load_flax_model(fullpath, epoch=epoch)
-        assert params["unet"].keys() == unet_params.keys()
-        params["unet"] = jax.device_put(to_dtype(unet_params, dtype))
-
-    print("[ utils/serialization ] ✓")
-    return pipeline, params
-
-
 p_train_step = jax.pmap(
     training.policy_gradient.train_step,
     axis_name="batch",
@@ -138,11 +94,12 @@ def main():
     # load text encoder, vae, and unet (unet is optionally loaded from a local
     # fine-tuned path if args.loadpath is not None)
     print("loading models...")
-    pipeline, params = load_unet(
+    pipeline, params = utils.load_unet(
         None,
         epoch=args.load_epoch,
         pretrained_model=args.pretrained_model,
         dtype=args.dtype,
+        cache=args.cache,
     )
     pipeline.safety_checker = None
     params = jax.device_get(params)

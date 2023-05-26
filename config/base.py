@@ -1,13 +1,4 @@
-from ddpo.utils import LazyFn
 from . import user
-
-guidance_fn = LazyFn(lambda args: 7.5 if args.iteration == 0 else 1.0)
-datapath_fn = LazyFn(
-    lambda args: f"{user.bucket}/logs/rotational-imagenet/samples/0"
-    if args.iteration == 0
-    else "f:samples/{iteration}"
-)
-epoch_fn = LazyFn(lambda args: 1 if args.iteration == 0 else 10)
 
 base = {
     "sample": {
@@ -23,7 +14,7 @@ base = {
         "max_samples": 50e3,
         "max_steps": None,
         "local_size": 320,
-        "guidance_scale": guidance_fn,
+        "guidance_scale": 5.0,
         "filter_field": "labels",
         "mask_mode": "streaming_percentile",
         "mask_param": 95,
@@ -69,7 +60,7 @@ base = {
     },
     "pg": {
         # misc
-        "loadpath": datapath_fn,
+        "loadpath": "",
         "load_epoch": "latest",
         "modelpath": "models/pg",
         "savepath": "f:models/pg",

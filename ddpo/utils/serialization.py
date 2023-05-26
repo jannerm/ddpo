@@ -248,6 +248,7 @@ def load_finetuned_stable_diffusion(
     epoch="latest",
     pretrained_model="flax/sd15",
     dtype=jnp.float32,
+    cache="cache",
 ):
     stable_models, stable_params = load_stable_diffusion(
         pretrained_model,
@@ -261,6 +262,7 @@ def load_finetuned_stable_diffusion(
             epoch=epoch,
             pretrained_model=pretrained_model,
             dtype=dtype,
+            cache=cache,
         )
         unet_params = finetuned_params["unet"]
         unet_params = to_dtype(unet_params, dtype)
@@ -318,15 +320,15 @@ def load_flax_model(loadpath, epoch="latest"):
 # pretrained_model = 'CompVis/stable-diffusion-v1-4'
 # pretrained_model = 'flax/stable-diffusion-2-1'
 def load_unet(
-    loadpath, epoch="latest", pretrained_model="flax/sd15", dtype=jnp.float32
+    loadpath,
+    epoch="latest",
+    pretrained_model="flax/sd15",
+    dtype=jnp.float32,
+    cache="cache",
 ):
     # revision = 'bf16' if dtype == jnp.bfloat16 else None
     # revision = 'flax'
     revision = None
-    if jax.process_count() > 1:
-        cache = None
-    else:
-        cache = os.path.expanduser("~/nfs/cache")
     print(
         f"[ utils/serialization ] Downloading pretrained model: {pretrained_model} | "
         f"revision: {revision} | dtype: {dtype} | cache: {cache}"

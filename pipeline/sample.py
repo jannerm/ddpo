@@ -38,6 +38,7 @@ pipeline, params = utils.load_unet(
     loadpath,
     epoch=args.load_epoch,
     pretrained_model=args.pretrained_model,
+    cache=args.cache,
 )
 params = replicate(params)
 pipeline.safety_checker = None
