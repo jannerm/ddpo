@@ -3,10 +3,8 @@ import random
 import numpy as np
 import jax
 import torch
-import pdb
 
 from ddpo import utils
-from . import pokemon
 
 
 class BucketDataset(torch.utils.data.Dataset):
@@ -56,27 +54,6 @@ class BucketDataset(torch.utils.data.Dataset):
 def preprocess_train(text_transforms, examples):
     examples["input_ids"] = text_transforms(examples)
     return examples
-
-
-def tokenize_captions(
-    tokenizer,
-    examples,
-    field="text",
-    is_train=True,
-    padding="do_not_pad",
-    truncation=True,
-):
-    if isinstance(caption, (list, np.ndarray)):
-        caption = random.choice(caption)
-
-    inputs = tokenizer(
-        captions,
-        max_length=tokenizer.model_max_length,
-        padding="padding",
-        return_tensors="np",
-    )
-    input_ids = inputs.input_ids
-    return input_ids
 
 
 def select_caption(examples, field="training_prompts"):
