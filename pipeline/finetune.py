@@ -61,11 +61,8 @@ def main():
 
     # --------------------------------- models ---------------------------------#
 
-    loadpath = (
-        None if args.iteration == 0 else "flax:" + os.path.join(args.cache, "latest")
-    )
     stable_models, stable_params = utils.load_finetuned_stable_diffusion(
-        loadpath,
+        args.modelpath,
         epoch=args.load_epoch,
         pretrained_model=args.pretrained_model,
         dtype=args.dtype,

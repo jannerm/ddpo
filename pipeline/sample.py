@@ -33,7 +33,7 @@ print(
 
 # ----------------------------------- loading ----------------------------------#
 
-loadpath = None if args.iteration == 0 else "flax:" + os.path.join(args.cache, "latest")
+loadpath = None if args.iteration == 0 else args.loadpath
 pipeline, params = utils.load_unet(
     loadpath,
     epoch=args.load_epoch,
