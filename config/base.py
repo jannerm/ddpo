@@ -371,7 +371,7 @@ llava_bertscore = {
     "pg": {
         "per_prompt_stats_bufsize": 32,
         "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 400,
+        "num_train_epochs": 200,
         "sample_batch_size": 8,
         "num_sample_batches_per_epoch": 1,
         "train_batch_size": 2,
@@ -380,7 +380,7 @@ llava_bertscore = {
         "ppo_clip_range": 1e-4,
         "learning_rate": 1e-5,
         "optimizer": "adamw",
-        "train_timestep_ratio": 0.5,
+        "train_timestep_ratio": 1.0,
         "save_freq": 20,
     },
 }
@@ -459,11 +459,11 @@ a_animals = {
     "pg": {
         "per_prompt_stats_bufsize": 32,
         "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 400,
+        "num_train_epochs": 200,
         "sample_batch_size": 8,
         "num_sample_batches_per_epoch": 1,
         "train_batch_size": 1,
-        "train_accumulation_steps": 4,
+        "train_accumulation_steps": 2,
         "num_inner_epochs": 1,
         "ppo_clip_range": 1e-4,
         "learning_rate": 1e-5,
