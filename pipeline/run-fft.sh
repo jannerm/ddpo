@@ -25,7 +25,7 @@ do
     # fi
 
     ## finetune
-    python pipeline/finetune_minimal.py --dataset ${dataset} --iteration ${i}
+    python pipeline/finetune.py --dataset ${dataset} --iteration ${i}
     ## rm logs folder with local model checkpoints
     sleep 1m
     rm -rf logs
