@@ -1,0 +1,7 @@
+PROMPT: a monkey washing dishes
+SUB Q: who is washing the dishes?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: washing
+OBJ Q: what is the monkey washing?
+OBJ A: dishes

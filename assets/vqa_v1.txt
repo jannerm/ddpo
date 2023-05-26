@@ -1,0 +1,119 @@
+PROMPT: a wizard washing a car
+SUB Q: what is washing the car?
+SUB A: wizard
+VERB Q: what is the wizard doing?
+VERB A: washing
+OBJ Q: what is the wizard washing?
+OBJ A: car
+
+PROMPT: a duck eating a sandwich
+SUB Q: what is eating the sandwich?
+SUB A: duck
+VERB Q: what is the duck doing?
+VERB A: eating
+OBJ Q: what is the duck eating?
+OBJ A: sandwich
+
+PROMPT: a bear carrying a bag
+SUB Q: what is carrying the bag?
+SUB A: bear
+VERB Q: what is the bear doing?
+VERB A: carrying
+OBJ Q: what is the bear carrying?
+OBJ A: bag
+
+PROMPT: a monkey washing dishes
+SUB Q: who is washing the dishes?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: washing
+OBJ Q: what is the monkey washing?
+OBJ A: dishes
+
+PROMPT: a cat painting a picture
+SUB Q: who is painting the picture?
+SUB A: cat
+VERB Q: what is the cat doing?
+VERB A: painting
+OBJ Q: what is the cat painting?
+OBJ A: picture
+
+PROMPT: a horse playing the guitar
+SUB Q: who is playing the guitar?
+SUB A: horse
+VERB Q: what is the horse doing?
+VERB A: playing
+OBJ Q: what is the horse playing?
+OBJ A: guitar
+
+PROMPT: a parrot driving a car
+SUB Q: who is driving the car?
+SUB A: parrot
+VERB Q: what is the parrot doing?
+VERB A: driving
+OBJ Q: what is the parrot driving?
+OBJ A: car
+
+PROMPT: a penguin knitting a sweater
+SUB Q: who is knitting the sweater?
+SUB A: penguin
+VERB Q: what is the penguin doing?
+VERB A: knitting
+OBJ Q: what is the penguin knitting?
+OBJ A: sweater
+
+PROMPT: a frog reading a book
+SUB Q: who is reading the book?
+SUB A: frog
+VERB Q: what is the frog doing?
+VERB A: reading
+OBJ Q: what is the frog reading?
+OBJ A: book
+
+PROMPT: a snake playing soccer
+SUB Q: who is playing soccer?
+SUB A: snake
+VERB Q: what is the snake doing?
+VERB A: playing
+OBJ Q: what is the snake playing?
+OBJ A: soccer
+
+PROMPT: a raccoon cooking pancakes
+SUB Q: who is cooking the pancakes?
+SUB A: raccoon
+VERB Q: what is the raccoon doing?
+VERB A: cooking
+OBJ Q: what is the raccoon cooking?
+OBJ A: pancakes
+
+PROMPT: a kangaroo playing the drums
+SUB Q: who is playing the drums?
+SUB A: kangaroo
+VERB Q: what is the kangaroo doing?
+VERB A: playing
+OBJ Q: what is the kangaroo playing?
+OBJ A: drums
+
+PROMPT: a giraffe dancing ballet
+SUB Q: who is dancing ballet?
+SUB A: giraffe
+VERB Q: what is the giraffe doing?
+VERB A: dancing
+OBJ Q: what is the giraffe dancing?
+OBJ A: ballet
+
+PROMPT: a squirrel riding a bike
+SUB Q: who is riding the bike?
+SUB A: squirrel
+VERB Q: what is the squirrel doing?
+VERB A: riding
+OBJ Q: what is the squirrel riding?
+OBJ A: bike
+
+PROMPT: a turtle playing chess
+SUB Q: who is playing chess?
+SUB A: turtle
+VERB Q: what is the turtle doing?
+VERB A: playing
+OBJ Q: what is the turtle playing?
+OBJ A: chess

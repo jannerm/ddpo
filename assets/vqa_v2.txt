@@ -1,0 +1,119 @@
+PROMPT: a monkey washing dishes
+SUB Q: who is washing the dishes?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: washing
+OBJ Q: what is the monkey washing?
+OBJ A: dishes
+
+PROMPT: a squirrel washing dishes
+SUB Q: who is washing the dishes?
+SUB A: squirrel
+VERB Q: what is the squirrel doing?
+VERB A: washing
+OBJ Q: what is the squirrel washing?
+OBJ A: dishes
+
+PROMPT: a raccoon washing dishes
+SUB Q: who is washing the dishes?
+SUB A: raccoon
+VERB Q: what is the raccoon doing?
+VERB A: washing
+OBJ Q: what is the raccoon washing?
+OBJ A: dishes
+
+PROMPT: a dog washing dishes
+SUB Q: who is washing the dishes?
+SUB A: dog
+VERB Q: what is the dog doing?
+VERB A: washing
+OBJ Q: what is the dog washing?
+OBJ A: dishes
+
+PROMPT: a bear washing dishes
+SUB Q: who is washing the dishes?
+SUB A: bear
+VERB Q: what is the bear doing?
+VERB A: washing
+OBJ Q: what is the bear washing?
+OBJ A: dishes
+
+PROMPT: a monkey riding a bike
+SUB Q: who is riding the bike?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: riding
+OBJ Q: what is the monkey riding?
+OBJ A: bike
+
+PROMPT: a squirrel riding a bike
+SUB Q: who is riding the bike?
+SUB A: squirrel
+VERB Q: what is the squirrel doing?
+VERB A: riding
+OBJ Q: what is the squirrel riding?
+OBJ A: bike
+
+PROMPT: a raccoon riding a bike
+SUB Q: who is riding the bike?
+SUB A: raccoon
+VERB Q: what is the raccoon doing?
+VERB A: riding
+OBJ Q: what is the raccoon riding?
+OBJ A: bike
+
+PROMPT: a dog riding a bike
+SUB Q: who is riding the bike?
+SUB A: dog
+VERB Q: what is the dog doing?
+VERB A: riding
+OBJ Q: what is the dog riding?
+OBJ A: bike
+
+PROMPT: a bear riding a bike
+SUB Q: who is riding the bike?
+SUB A: bear
+VERB Q: what is the bear doing?
+VERB A: riding
+OBJ Q: what is the bear riding?
+OBJ A: bike
+
+PROMPT: a monkey playing chess
+SUB Q: who is playing chess?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: playing
+OBJ Q: what is the monkey playing?
+OBJ A: chess
+
+PROMPT: a squirrel playing chess
+SUB Q: who is playing chess?
+SUB A: squirrel
+VERB Q: what is the squirrel doing?
+VERB A: playing
+OBJ Q: what is the squirrel playing?
+OBJ A: chess
+
+PROMPT: a raccoon playing chess
+SUB Q: who is playing chess?
+SUB A: raccoon
+VERB Q: what is the raccoon doing?
+VERB A: playing
+OBJ Q: what is the raccoon playing?
+OBJ A: chess
+
+PROMPT: a dog playing chess
+SUB Q: who is playing chess?
+SUB A: dog
+VERB Q: what is the dog doing?
+VERB A: playing
+OBJ Q: what is the dog playing?
+OBJ A: chess
+
+PROMPT: a bear playing chess
+SUB Q: who is playing chess?
+SUB A: bear
+VERB Q: what is the bear doing?
+VERB A: playing
+OBJ Q: what is the bear playing?
+OBJ A: chess

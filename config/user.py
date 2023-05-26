@@ -1,0 +1,1 @@
+bucket = "gs://my-bucket"

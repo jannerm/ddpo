@@ -1,0 +1,111 @@
+PROMPT: a cat playing piano
+SUB Q: who is playing the piano?
+SUB A: cat
+VERB Q: what is the cat doing?
+VERB A: playing
+OBJ Q: what is the cat playing?
+OBJ A: piano
+
+PROMPT: a firefighter cooking spaghetti
+SUB Q: who is cooking spaghetti?
+SUB A: firefighter
+VERB Q: what is the firefighter doing?
+VERB A: cooking
+OBJ Q: what is the firefighter cooking?
+OBJ A: spaghetti
+
+PROMPT: a baby riding a skateboard
+SUB Q: who is riding the skateboard?
+SUB A: baby
+VERB Q: what is the baby doing?
+VERB A: riding
+OBJ Q: what is the baby riding?
+OBJ A: skateboard
+
+PROMPT: a penguin painting a picture
+SUB Q: who is painting the picture?
+SUB A: penguin
+VERB Q: what is the penguin doing?
+VERB A: painting
+OBJ Q: what is the penguin painting?
+OBJ A: picture
+
+PROMPT: a robot gardening a plant
+SUB Q: who is gardening the plant?
+SUB A: robot
+VERB Q: what is the robot doing?
+VERB A: gardening
+OBJ Q: what is the robot gardening?
+OBJ A: plant
+
+PROMPT: a monkey washing dishes
+SUB Q: who is washing the dishes?
+SUB A: monkey
+VERB Q: what is the monkey doing?
+VERB A: washing
+OBJ Q: what is the monkey washing?
+OBJ A: dishes
+
+PROMPT: a horse reading a book
+SUB Q: who is reading the book?
+SUB A: horse
+VERB Q: what is the horse doing?
+VERB A: reading
+OBJ Q: what is the horse reading?
+OBJ A: book
+
+PROMPT: a chef fixing a car
+SUB Q: who is fixing the car?
+SUB A: chef
+VERB Q: what is the chef doing?
+VERB A: fixing
+OBJ Q: what is the chef fixing?
+OBJ A: car
+
+PROMPT: an elephant playing basketball
+SUB Q: who is playing basketball?
+SUB A: elephant
+VERB Q: what is the elephant doing?
+VERB A: playing
+OBJ Q: what is the elephant playing?
+OBJ A: basketball
+
+PROMPT: a squirrel painting a house
+SUB Q: who is painting the house?
+SUB A: squirrel
+VERB Q: what is the squirrel doing?
+VERB A: painting
+OBJ Q: what is the squirrel painting?
+OBJ A: house
+
+PROMPT: a turtle playing guitar
+SUB Q: who is playing guitar?
+SUB A: turtle
+VERB Q: what is the turtle doing?
+VERB A: playing
+OBJ Q: what is the turtle playing?
+OBJ A: guitar
+
+PROMPT: a dog carrying clothes
+SUB Q: who is carrying clothes?
+SUB A: dog
+VERB Q: what is the dog doing?
+VERB A: carrying
+OBJ Q: what is the dog carrying?
+OBJ A: clothes
+
+PROMPT: a giraffe knitting a sweater
+SUB Q: who is knitting the sweater?
+SUB A: giraffe
+VERB Q: what is the giraffe doing?
+VERB A: knitting
+OBJ Q: what is the giraffe knitting?
+OBJ A: sweater
+
+PROMPT: a whale painting a mural
+SUB Q: who is painting the mural?
+SUB A: whale
+VERB Q: what is the whale doing?
+VERB A: painting
+OBJ Q: what is the whale painting?
+OBJ A: mural
