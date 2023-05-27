@@ -7,7 +7,6 @@ import numpy as np
 from flax.jax_utils import replicate
 from flax.training.common_utils import shard
 from jax.experimental.compilation_cache import compilation_cache
-import pdb
 
 from ddpo import datasets, training, utils
 

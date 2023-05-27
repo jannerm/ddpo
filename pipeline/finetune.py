@@ -3,13 +3,11 @@ import jax
 jax.distributed.initialize()
 
 import math
-import os
 import numpy as np
 import jax.numpy as jnp
 import optax
 import transformers
 import diffusers
-import pdb
 
 from functools import partial
 from flax import jax_utils
@@ -28,7 +26,7 @@ class Parser(utils.Parser):
 DEVICES = jax.local_devices()
 
 p_train_step = jax.pmap(
-    training.stable.train_step,
+    training.diffusion.train_step,
     axis_name="batch",
     donate_argnums=(0,),
     static_broadcasted_argnums=(5,),
