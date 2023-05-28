@@ -42,11 +42,6 @@ def verify_n_workers(y):
     return x
 
 
-n_workers = verify_n_workers(jnp.ones(len(DEVICES)))
-print("WORKERS", n_workers)
-print("hosts", jax.process_count())
-print("proc", jax.process_index())
-
 # ---------------------------------- end debug ---------------------------------#
 
 
@@ -113,11 +108,6 @@ def main():
         adamw,
     )
 
-    # optimizer = optax.MultiSteps(
-    #     optimizer,
-    #     every_k_schedule=2,
-    # )
-
     state = train_state.TrainState.create(
         apply_fn=unet.apply,
         params=unet_params,
@@ -137,7 +127,6 @@ def main():
 
     state = jax_utils.replicate(state)
     text_encoder_params = jax_utils.replicate(text_encoder.params)
-    # vae_params = jax_utils.replicate(vae_params, devices=DEVICES)
     noise_scheduler_state = jax_utils.replicate(noise_scheduler_state)
 
     # -------------------------- generic training setup ------------------------#
@@ -174,7 +163,6 @@ def main():
 
     for epoch in range(args.num_train_epochs):
         losses = []
-        # train_dataloader.dataset.shuffle()
         steps_per_epoch = len(train_dataset) // worker_batch_size
         progress = utils.Progress(steps_per_epoch, name=f"Epoch {epoch}")
 
