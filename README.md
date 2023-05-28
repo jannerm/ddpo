@@ -5,7 +5,7 @@ This codebase has been tested on [Google Cloud TPUs](https://cloud.google.com/tp
 
 | `prompt_fn` | `filter_field` | Weights and Demo |
 | --- | --- | --- |
-| `imagenet_animals` | `jpeg` | [kddpo-compressibility](https://huggingface.co/kvablack/ddpo-compressibility) |
+| `imagenet_animals` | `jpeg` | [ddpo-compressibility](https://huggingface.co/kvablack/ddpo-compressibility) |
 | `imagenet_animals` | `neg_jpeg` | [ddpo-incompressibility](https://huggingface.co/kvablack/ddpo-incompressibility) |
 | `from_file(assets/common_animals.txt)` | `aesthetic` | [ddpo-aesthetic](https://huggingface.co/kvablack/ddpo-aesthetic) |
 | `nouns_activities(assets/common_animals.txt, assets/activities_v0.txt)` | `llava_bertscore` | [ddpo-alignment](https://huggingface.co/kvablack/ddpo-alignment) |
@@ -45,7 +45,7 @@ bash pipeline/run-sparse.sh
 These methods run the outermost training loop in bash rather than Python. They run the `pipeline/sample.py` script to collect a dataset of samples and rewards, run `pipeline/finetune.py` to train the model on the most recent dataset, and repeat for some number of iterations. The sampling step and finetuning step have different configs, which are labeled `"sample"` and `"train"`, respectively, in `config/base.py`.
 
 ## Running LLaVA Inference
-LLaVA inference was performed by making HTTP requests to a separate GPU server running [this repo](https://github.com/kvablack/LLaVA-server/). See the `llava_bertscore` reward function in `training/callbacks.py` for the client-side code.
+LLaVA inference was performed by making HTTP requests to a separate GPU server. See the `llava_bertscore` reward function in `training/callbacks.py` for the client-side code, and [this repo](https://github.com/kvablack/LLaVA-server/) for the server-side code.
 
 ## Reference
 ```
