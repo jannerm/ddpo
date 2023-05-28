@@ -176,7 +176,6 @@ neg_compressed_animals = {
     },
 }
 
-## TODO(@janner): figure out a better way of combining dataset and algorithm configs
 compressed_animals_rwr = {
     "common": {
         "logbase": f"{user.bucket}/logs/rwr-compressed-animals-s10k",
