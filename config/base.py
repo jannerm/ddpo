@@ -13,7 +13,7 @@ base = {
         "resolution": 512,
         "max_samples": 50e3,
         "max_steps": None,
-        "local_size": 320,
+        "local_size": 1600,
         "guidance_scale": 5.0,
         "filter_field": "labels",
         "mask_mode": "streaming_percentile",
@@ -38,7 +38,7 @@ base = {
         "max_train_samples": None,
         "resolution": 512,
         "train_cfg": False,
-        "guidance_scale": None,
+        "guidance_scale": 5.0,
         "train_batch_size": 2,
         "num_train_epochs": 40,
         "max_train_steps": None,
@@ -67,23 +67,23 @@ base = {
         "pretrained_model": "duongna/stable-diffusion-v1-4-flax",
         "resolution": 512,
         "filter_field": None,
-        "guidance_scale": 7.5,
+        "guidance_scale": 5.0,
         "dtype": "float32",
         "cache": "cache",
         "verbose": False,
         "seed": 0,
         "iteration": 0,
         # sampling
-        "sample_batch_size": 2,  # per device
-        "num_sample_batches_per_epoch": 8,
+        "sample_batch_size": 8,  # per device
+        "num_sample_batches_per_epoch": 1,
         "n_inference_steps": 50,
         "identical_batch": False,
         "evaluate": False,
         "eta": 1.0,
         # training
         "train_batch_size": 2,  # per device
-        "train_accumulation_steps": 4,
-        "num_train_epochs": 1000,
+        "train_accumulation_steps": 1,
+        "num_train_epochs": 200,
         "num_inner_epochs": 1,  # inner epochs of PPO training (# of times to loop over collected data)
         "ppo_clip_range": 1e-4,
         "train_cfg": True,
@@ -93,10 +93,12 @@ base = {
         "weight_decay": 1e-4,
         "epsilon": 1e-8,
         "max_grad_norm": 1.0,
-        "save_freq": 100,
+        "save_freq": 10,
         "optimizer": "adamw",
         "train_timestep_ratio": 1.0,
         "prompt_kwargs": {},
+        "per_prompt_stats_bufsize": 32,
+        "per_prompt_stats_min_count": 16,
     },
 }
 
@@ -106,10 +108,8 @@ compressed_animals = {
         "logbase": f"{user.bucket}/logs/identical-compressed-animals-s1024-p90",
         "prompt_fn": "imagenet_animals",
         "filter_field": "jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
-        "n_samples_per_device": 16,
         "max_samples": 1024,
         "mask_mode": "percentile",
         "mask_param": 90,
@@ -122,21 +122,7 @@ compressed_animals = {
         "save_freq": 20,
         "dtype": "float32",
     },
-    "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 1,
-        "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
-    },
+    "pg": {},
 }
 
 neg_compressed_animals = {
@@ -144,7 +130,6 @@ neg_compressed_animals = {
         "logbase": f"{user.bucket}/logs/identical-neg-compressed-animals-s1024-p90",
         "prompt_fn": "imagenet_animals",
         "filter_field": "neg_jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 1024,
@@ -159,21 +144,7 @@ neg_compressed_animals = {
         "save_freq": 20,
         "dtype": "float32",
     },
-    "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 1,
-        "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
-    },
+    "pg": {},
 }
 
 compressed_animals_rwr = {
@@ -181,20 +152,18 @@ compressed_animals_rwr = {
         "logbase": f"{user.bucket}/logs/rwr-compressed-animals-s10k",
         "prompt_fn": "imagenet_animals",
         "filter_field": "jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 10240,
         "mask_mode": "streaming_percentile",
         "mask_param": 0,  ## save all samples
         "identical_batch": False,
-        "local_size": 1600,
     },
     "calibrate": {},
     "train": {
         "train_cfg": True,
         "train_batch_size": 1,
-        "num_train_epochs": 5,  ## same number of gradient steps as filter-finetune
+        "num_train_epochs": 5,  ## same number of gradient steps as sparse
         "save_freq": 20,
         "dtype": "float32",
         "weighted_dataset": True,
@@ -208,20 +177,18 @@ neg_compressed_animals_rwr = {
         "logbase": f"{user.bucket}/logs/rwr-neg-compressed-animals-s10k",
         "prompt_fn": "imagenet_animals",
         "filter_field": "neg_jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 10240,
         "mask_mode": "streaming_percentile",
         "mask_param": 0,  ## save all samples
         "identical_batch": False,
-        "local_size": 1600,
     },
     "calibrate": {},
     "train": {
         "train_cfg": True,
         "train_batch_size": 1,
-        "num_train_epochs": 5,  ## same number of gradient steps as filter-finetune
+        "num_train_epochs": 5,  ## same number of gradient steps as sparse
         "save_freq": 20,
         "dtype": "float32",
         "weighted_dataset": True,
@@ -236,71 +203,20 @@ vqa_v0 = {
         "prompt_fn": "vqa_dataset",
         "prompt_kwargs": {"loadpath": "assets/vqa_v0.txt"},
         "filter_field": "vqa",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 2e3,
         "mask_mode": "threshold",
         "mask_param": 0.65,
         "identical_batch": False,
-        # 'local_size': 16,
     },
-    "calibrate": {},
     "train": {
         "train_cfg": True,
         "train_batch_size": 1,
         "num_train_epochs": 50,
         "save_freq": 20,
     },
-}
-
-# ------------------------------------------------------------------------------#
-
-rotational_pg = {
-    "common": {
-        "logbase": f"{user.bucket}/logs/rotational-animal-400-pg",
-        "prompt_fn": "imagenet_animals",
-        "filter_field": "rotational",
-        "guidance_scale": 5.0,
-        # 'sample_batch_size': 8,
-    },
-}
-
-rotational_corr_pg = {
-    "common": {
-        "logbase": f"{user.bucket}/logs/rotational-corr-400-pg",
-        "prompt_fn": "imagenet_animals",
-        "filter_field": "rotational_corr",
-        "guidance_scale": 5.0,
-    },
-}
-
-mirror_pg = {
-    "common": {
-        "logbase": f"{user.bucket}/logs/mirror-pg-400-pod",
-        "prompt_fn": "imagenet_animals",
-        "filter_field": "mirror",
-        "guidance_scale": 5.0,
-        # 'sample_batch_size': 8,
-    },
-}
-
-thumbnail_pg = {
-    "common": {
-        "logbase": f"{user.bucket}/logs/thumbnail-animal-400-pg",
-        "prompt_fn": "imagenet_animals",
-        "filter_field": "thumbnail",
-        "guidance_scale": 5.0,
-    },
-}
-
-aesthetic_pg = {
-    "common": {
-        "logbase": f"{user.bucket}/logs/aesthetic-animal-400-pg",
-        "prompt_fn": "imagenet_animals",
-        "filter_field": "aesthetic",
-        "guidance_scale": 5.0,
-    },
+    "pg": {},
 }
 
 llava_vqa = {
@@ -309,22 +225,11 @@ llava_vqa = {
         "prompt_fn": "vqa_dataset",
         "prompt_kwargs": {"loadpath": "assets/vqa_v2.txt"},
         "filter_field": "llava_vqa",
-        "guidance_scale": 5.0,
     },
     "pg": {
         "per_prompt_stats_bufsize": 128,
         "per_prompt_stats_min_count": 32,
         "num_train_epochs": 120,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 2,
-        "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
     },
 }
 
@@ -337,23 +242,8 @@ llava_counting = {
             "number_range": (2, 8),
         },
         "filter_field": "llava_vqa",
-        "guidance_scale": 5.0,
     },
-    "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 2,
-        "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
-    },
+    "pg": {},
 }
 
 llava_bertscore = {
@@ -365,23 +255,8 @@ llava_bertscore = {
             "activities_path": "assets/activities_v0.txt",
         },
         "filter_field": "llava_bertscore",
-        "guidance_scale": 5.0,
     },
-    "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 2,
-        "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 20,
-    },
+    "pg": {},
 }
 
 a_dog_1 = {
@@ -390,22 +265,12 @@ a_dog_1 = {
         "prompt_fn": "manual",
         "prompt_kwargs": {"prompts": ["a dog"]},
         "filter_field": "aesthetic",
-        "guidance_scale": 5.0,
     },
     "pg": {
         "per_prompt_stats_bufsize": None,
         "per_prompt_stats_min_count": None,
-        "num_train_epochs": 100,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
         "train_batch_size": 1,
         "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
     },
 }
 
@@ -415,22 +280,10 @@ a_dog_2 = {
         "prompt_fn": "imagenet_dogs",
         "prompt_kwargs": {},
         "filter_field": "aesthetic",
-        "guidance_scale": 5.0,
     },
     "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 100,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
         "train_batch_size": 1,
         "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
     },
 }
 
@@ -440,7 +293,6 @@ a_animals = {
         "prompt_fn": "from_file",
         "prompt_kwargs": {"loadpath": "assets/common_animals.txt"},
         "filter_field": "aesthetic",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 1024,
@@ -456,19 +308,8 @@ a_animals = {
         "dtype": "float32",
     },
     "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
         "train_batch_size": 1,
         "train_accumulation_steps": 2,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 20,
     },
 }
 
@@ -478,15 +319,12 @@ a_animals_rwr = {
         "prompt_fn": "from_file",
         "prompt_kwargs": {"loadpath": "assets/common_animals.txt"},
         "filter_field": "aesthetic",
-        "guidance_scale": 5.0,
     },
     "sample": {
-        "n_samples_per_device": 16,
         "max_samples": 10240,
         "mask_mode": "streaming_percentile",
         "mask_param": 0,  ## save all samples
         "identical_batch": False,
-        "local_size": 1600,
     },
     "train": {
         "train_cfg": True,
@@ -498,21 +336,7 @@ a_animals_rwr = {
         "temperature": 1 / 5.0,
         "per_prompt_weights": True,
     },
-    "pg": {
-        "per_prompt_stats_bufsize": 32,
-        "per_prompt_stats_min_count": 16,
-        "num_train_epochs": 200,
-        "sample_batch_size": 8,
-        "num_sample_batches_per_epoch": 1,
-        "train_batch_size": 1,
-        "train_accumulation_steps": 4,
-        "num_inner_epochs": 1,
-        "ppo_clip_range": 1e-4,
-        "learning_rate": 1e-5,
-        "optimizer": "adamw",
-        "train_timestep_ratio": 1.0,
-        "save_freq": 10,
-    },
+    "pg": {},
 }
 
 compressed_animals_nocfg = {
@@ -520,7 +344,6 @@ compressed_animals_nocfg = {
         "logbase": f"{user.bucket}/logs/nocfg-compressed-animals-s1024-p90",
         "prompt_fn": "imagenet_animals",
         "filter_field": "jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 1024,
@@ -544,7 +367,6 @@ neg_compressed_animals_nocfg = {
         "logbase": f"{user.bucket}/logs/nocfg-neg-compressed-animals-s1024-p90",
         "prompt_fn": "imagenet_animals",
         "filter_field": "neg_jpeg",
-        "guidance_scale": 5.0,
     },
     "sample": {
         "max_samples": 1024,
