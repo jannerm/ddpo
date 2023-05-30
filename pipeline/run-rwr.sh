@@ -1,7 +1,7 @@
 export TF_CPP_MIN_LOG_LEVEL=2
 export dataset='compressed_animals_rwr'
 
-for i in 0 1 2 3 4 5;
+for i in $(seq 0 9);
 do
     echo Iteration: $i
 
