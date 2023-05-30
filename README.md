@@ -26,7 +26,7 @@ python pipeline/policy_gradient.py --dataset compressed-animals
 
 The `--dataset` flag can be replaced by any of the configs defined in `config/base.py`.
 The first config dict, `base`, defines common arguments that are overridden in specific configs further down.
-Some arguments are shared between methods; DDPO-specific hyperparameters are in the `"pg"` field.
+Some arguments are shared between methods; DDPO-specific hyperparameters are in the `pg` field.
 
 The most important arguments are `prompt_fn` and `filter_field`, which define the prompt distribution and reward function, respectively.
 See `training/prompts.py` for prompt functions and `training/callbacks.py` for reward functions.
