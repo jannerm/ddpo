@@ -1,0 +1,35 @@
+name: ddpo-gpu
+channels:
+- defaults
+- conda-forge
+- pytorch
+dependencies:
+- python=3.9
+- pip
+- pip:
+    - -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+    - --extra-index-url https://download.pytorch.org/whl
+    - imageio == 2.22.4
+    - imageio-ffmpeg >= 0.4.3
+    - scikit-video == 1.1.11
+    - torch == 1.13.0+cu116
+    - torchvision == 0.14.0+cu116
+    - diffusers==0.12.1
+    - transformers == 4.28.1
+    - numpy >= 1.20.2
+    - tqdm >= 4.60.0
+    - flax == 0.6.9
+    - optax == 0.1.5
+    - jax[cuda12_pip] == 0.4.8
+    - jaxlib == 0.4.7
+    - optax >= 0.0.6
+    - typed-argument-parser == 1.7.2
+    - gitpython == 3.1.29
+    - google-cloud-storage == 2.6.0
+    - gcsfs == 2022.11.0
+    - fsspec == 2022.11.0
+    - h5py == 3.7.0
+    - datasets == 2.7.1
+    - matplotlib == 3.6.2
+    - latex == 0.7.0
+    - inflect == 6.0.4

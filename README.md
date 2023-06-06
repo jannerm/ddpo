@@ -13,9 +13,17 @@ This codebase has been tested on [Google Cloud TPUs](https://cloud.google.com/tp
 
 ## Installation
 
+For TPU
 ```
 conda env create -f environment_tpu.yml
 conda activate ddpo-tpu
+pip install -e .
+```
+
+For GPU
+```
+conda env create -f environment_gpu.yml
+conda activate ddpo-gpu
 pip install -e .
 ```
 
