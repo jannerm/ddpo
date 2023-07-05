@@ -3,6 +3,8 @@
 Training code for the paper [Training Diffusion Models with Reinforcement Learning](https://rl-diffusion.github.io/).
 This codebase has been tested on [Google Cloud TPUs](https://cloud.google.com/tpu) (v3 for RWR and v4 for DDPO); it has not been tested on GPUs.
 
+**UPDATE:** We now have a PyTorch implementation that supports GPUs and LoRA for low-memory training [here](https://github.com/kvablack/ddpo-pytorch)!
+
 | `prompt_fn` | `filter_field` | Weights and Demo |
 | --- | --- | --- |
 | `imagenet_animals` | `jpeg` | [ddpo-compressibility](https://huggingface.co/kvablack/ddpo-compressibility) |
